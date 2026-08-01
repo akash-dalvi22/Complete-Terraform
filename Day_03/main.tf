@@ -1,3 +1,9 @@
+# Configure the AWS provider
+
+provider "aws" {
+  region  = "us-east-1"
+}
+
 # Create an EC2 instance with tags for Name, Environment, and Backup
 
 resource "aws_instance" "linux-server" {
