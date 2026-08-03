@@ -1,9 +1,12 @@
-# Folder restructure for Terraform project
-
 resource "aws_instance" "linux-server" {
-  ami           = "ami-0c55b159cbfafe1f0"
-  count        = var.instance_count
-  instance_type = "t2.micro"
+  ami           = var.ami_id
+  instance_type = var.instance_type
+
+  tags = var.tags
+}
+
+resource "aws_s3_bucket" "linux-server-bucket" {
+  bucket = "linux-server-bucket-${var.environment}"
 
   tags = var.tags
 }
