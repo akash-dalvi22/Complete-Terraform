@@ -18,7 +18,7 @@ resource "aws_iam_group_membership" "education_membership" {
   group = aws_iam_group.education.name
 
   users = [
-    for user in aws_iam_user.users: user.name if user.tags.department == "Education"
+    for user in aws_iam_user.users : user.name if user.tags.Department == "Education"
   ]
 }
 resource "aws_iam_group_membership" "engineer_membership" {
@@ -26,7 +26,7 @@ resource "aws_iam_group_membership" "engineer_membership" {
   group = aws_iam_group.engineer.name
 
   users = [
-    for user in aws_iam_user.users: user.name if user.tags.department == "Engineering"
+    for user in aws_iam_user.users : user.name if user.tags.Department == "Engineering"
   ]
 }
 
@@ -35,6 +35,6 @@ resource "aws_iam_group_membership" "manager_membership" {
   group = aws_iam_group.manager.name
 
   users = [
-    for user in aws_iam_user.users: user.name if contains(user.tags.job_title, "Manager")
+    for user in aws_iam_user.users : user.name if strcontains(user.tags.JobTitle, "Manager")
   ]
 }
